@@ -1,0 +1,50 @@
+name: Publish articles to Qiita
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "qiita/articles/**/*.md"
+      - "scripts/publish_qiita.py"
+      - ".github/workflows/publish-qiita.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: qiita-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      QIITA_TOKEN: ${{ secrets.QIITA_TOKEN }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Publish changed articles
+        run: python scripts/publish_qiita.py --root . --state .qiita/state.json
+
+      - name: Commit publication state
+        run: |
+          if git diff --quiet -- .qiita/state.json; then
+            echo "Publication state did not change."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .qiita/state.json
+          git commit -m "chore: record Qiita publication state [skip ci]"
+          git push
