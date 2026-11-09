@@ -100,7 +100,7 @@ def validate_article(metadata: dict[str, Any], body: str, path: Path) -> dict[st
     return {
         "title": title.strip(),
         "tags": [{"name": tag.strip()} for tag in tags],
-        "raw_body": body.rstrip() + "\n",
+        "body": body.rstrip() + "\n",
         "published": metadata.get("published", False),
         "private": metadata.get("private", False),
         "coediting": metadata.get("coediting", False),
@@ -143,7 +143,7 @@ def request_qiita(method: str, url: str, token: str, payload: dict[str, Any] | N
 def article_payload(article: dict[str, Any]) -> dict[str, Any]:
     payload = {
         key: article[key]
-        for key in ("title", "tags", "private", "coediting", "tweet", "gist", "slide", "raw_body")
+        for key in ("title", "tags", "private", "coediting", "tweet", "slide", "body")
     }
     if article.get("organization_url_name"):
         payload["organization_url_name"] = article["organization_url_name"]
@@ -224,7 +224,7 @@ def main() -> int:
             raise RuntimeError("QIITA_TOKEN environment variable is not set")
 
         if item_id:
-            result = request_qiita("PUT", f"{api_base_url}/items/{item_id}", token, payload)
+            result = request_qiita("PATCH", f"{api_base_url}/items/{item_id}", token, payload)
         else:
             result = request_qiita("POST", f"{api_base_url}/items", token, payload)
 
