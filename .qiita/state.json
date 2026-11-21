@@ -1,4 +1,11 @@
 {
-  "version": 1,
-  "articles": {}
+  "articles": {
+    "qiita/articles/rds-vs-bigquery-learning.md": {
+      "content_hash": "130cec3145f6f6c20a3e21208563eacd61e2df8aed58dbd48207b6ba1d4bb35a",
+      "id": "15076f94489041887b36",
+      "title": "Google Cloud SQLとBigQueryの違いがわからなかったので、行指向・列指向とOLTP・OLAPから調べて整理した",
+      "url": "https://qiita.com/Pippichannnn/items/15076f94489041887b36"
+    }
+  },
+  "version": 1
 }
