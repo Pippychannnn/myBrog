@@ -1,5 +1,11 @@
 {
   "articles": {
+    "qiita/articles/api-rpc-rest-learning.md": {
+      "content_hash": "f4ecbd18b392688c371aca4ba95c4ff215ace5c7c4211d23278fa15b1c95a675",
+      "id": "27bc2fc85687e68e0b8a",
+      "title": "REST経験だけだった自分が、gRPC・GraphQLに戸惑った点を整理した",
+      "url": "https://qiita.com/Pippichannnn/items/27bc2fc85687e68e0b8a"
+    },
     "qiita/articles/cdn-aws-gcp-learning.md": {
       "content_hash": "5414a84a2304e7ba04f007cb0109483b210173e5c1da23fb4f14a459bcb939b3",
       "id": "ef11cd8fe8fb5fc8e4a2",
