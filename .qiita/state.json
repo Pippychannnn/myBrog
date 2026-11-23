@@ -17,6 +17,12 @@
       "id": "15076f94489041887b36",
       "title": "Google Cloud SQLとBigQueryの違いがわからなかったので、行指向・列指向とOLTP・OLAPから調べて整理した",
       "url": "https://qiita.com/Pippichannnn/items/15076f94489041887b36"
+    },
+    "qiita/articles/vpn-vpc-subnet-learning.md": {
+      "content_hash": "379d9e48bd8564ad33a9f780a09461bc167cb693ea7589ef0b0fc14d0323af74",
+      "id": "186a976b4022f1ba2418",
+      "title": "VPC・サブネット・VPNの関係を整理する（Dataflowのネットワーク設定で迷った話）",
+      "url": "https://qiita.com/Pippichannnn/items/186a976b4022f1ba2418"
     }
   },
   "version": 1
